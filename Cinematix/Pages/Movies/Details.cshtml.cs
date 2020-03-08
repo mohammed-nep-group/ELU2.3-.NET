@@ -12,14 +12,14 @@ namespace Cinematix
 {
     public class DetailsModel : PageModel
     {
-        private readonly Cinematix.Data.SchoolContext _context;
+        private readonly Cinematix.Data.CinematixContext _context;
 
-        public DetailsModel(Cinematix.Data.SchoolContext context)
+        public DetailsModel(Cinematix.Data.CinematixContext context)
         {
             _context = context;
         }
 
-        public Student Student { get; set; }
+        public Movie Movie { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,9 +28,9 @@ namespace Cinematix
                 return NotFound();
             }
 
-            Student = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
+            Movie = await _context.Movies.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Student == null)
+            if (Movie == null)
             {
                 return NotFound();
             }

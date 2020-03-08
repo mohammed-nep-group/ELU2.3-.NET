@@ -26,7 +26,7 @@ namespace Cinematix
 
                 try
                 {
-                    var context = services.GetRequiredService<SchoolContext>();
+                    var context = services.GetRequiredService<CinematixContext>();
                     context.Database.EnsureCreated();
                 }
                 catch (Exception ex)

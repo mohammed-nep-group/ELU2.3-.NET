@@ -1,0 +1,74 @@
+﻿@page
+@model Cinematix.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Movie.ImdbId" class="control-label"></label>
+                <input asp-for="Movie.ImdbId" class="form-control" />
+                <span asp-validation-for="Movie.ImdbId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Title" class="control-label"></label>
+                <input asp-for="Movie.Title" class="form-control" />
+                <span asp-validation-for="Movie.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Director" class="control-label"></label>
+                <input asp-for="Movie.Director" class="form-control" />
+                <span asp-validation-for="Movie.Director" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Cast" class="control-label"></label>
+                <input asp-for="Movie.Cast" class="form-control" />
+                <span asp-validation-for="Movie.Cast" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Description" class="control-label"></label>
+                <input asp-for="Movie.Description" class="form-control" />
+                <span asp-validation-for="Movie.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Runtime" class="control-label"></label>
+                <input asp-for="Movie.Runtime" class="form-control" />
+                <span asp-validation-for="Movie.Runtime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Rating" class="control-label"></label>
+                <input asp-for="Movie.Rating" class="form-control" />
+                <span asp-validation-for="Movie.Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.Genre" class="control-label"></label>
+                <input asp-for="Movie.Genre" class="form-control" />
+                <span asp-validation-for="Movie.Genre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movie.PegiRating" class="control-label"></label>
+                <input asp-for="Movie.PegiRating" class="form-control" />
+                <span asp-validation-for="Movie.PegiRating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -12,9 +12,9 @@ namespace Cinematix
 {
     public class CreateModel : PageModel
     {
-        private readonly Cinematix.Data.SchoolContext _context;
+        private readonly Cinematix.Data.CinematixContext _context;
 
-        public CreateModel(Cinematix.Data.SchoolContext context)
+        public CreateModel(Cinematix.Data.CinematixContext context)
         {
             _context = context;
         }
@@ -25,7 +25,7 @@ namespace Cinematix
         }
 
         [BindProperty]
-        public Student Student { get; set; }
+        public Movie Movie { get; set; }
 
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
@@ -36,7 +36,7 @@ namespace Cinematix
                 return Page();
             }
 
-            _context.Students.Add(Student);
+            _context.Movies.Add(Movie);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

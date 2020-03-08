@@ -12,18 +12,18 @@ namespace Cinematix
 {
     public class IndexModel : PageModel
     {
-        private readonly Cinematix.Data.SchoolContext _context;
+        private readonly Cinematix.Data.CinematixContext _context;
 
-        public IndexModel(Cinematix.Data.SchoolContext context)
+        public IndexModel(Cinematix.Data.CinematixContext context)
         {
             _context = context;
         }
 
-        public IList<Student> Student { get;set; }
+        public IList<Movie> Movie { get;set; }
 
         public async Task OnGetAsync()
         {
-            Student = await _context.Students.ToListAsync();
+            Movie = await _context.Movies.ToListAsync();
         }
     }
 }
