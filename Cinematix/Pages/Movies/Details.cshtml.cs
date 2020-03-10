@@ -21,6 +21,7 @@ namespace Cinematix
 
         public Movie Movie { get; set; }
 
+        
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -36,5 +37,6 @@ namespace Cinematix
             }
             return Page();
         }
+        
     }
 }
