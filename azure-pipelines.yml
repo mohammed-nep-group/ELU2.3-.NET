@@ -8,8 +8,8 @@ trigger:
 pool:
  vmImage: 'windows-latest'
 variables:
- project: '**/ELU23.csproj'
- projectName: 'ELU23.csproj'
+ project: '**/Cinematix.csproj'
+ projectName: 'Cinematix.csproj'
 steps:
 - task: NuGetToolInstaller@1
 - task: NuGetCommand@2
