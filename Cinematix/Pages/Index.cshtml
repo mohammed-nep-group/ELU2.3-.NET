@@ -1,151 +1,430 @@
-﻿@page
+@page
 @model Cinematix.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<style>
-    .movie-item {
-        margin-bottom: 1.5rem;
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<h1>Index</h1>
+
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'nl' }, 'google_translate_element');
     }
-
-        .movie-item img {
-            width: 100%;
-        }
-
-        .movie-item .movie-title {
-            padding: .5rem;
-            border: 1px solid black;
-            text-align: center;
-            font-family: sans-serif;
-        }
-</style>
-
-<div class="row movie-list"></div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        $.ajax({
-            type: 'GET',
-            url: 'https://api.themoviedb.org/3/discover/movie',
-            data: {
-                api_key: 'cea80748836f2f4f9f70ce9d4265efa1'
-            }
-        }).done(function (xhr) {
-            return;
-            console.log(xhr);
-
-            for (let index in xhr.results) {
-                let result = xhr.results[index];
-                $('.movie-list').append(
-                    '<div class="col-lg-3 movie-item">' +
-                    '<img src = "http://image.tmdb.org/t/p/w500' + result.poster_path + '" />' +
-                    '<div class="movie-title"><a href="/Movies/Details?id=2" temp="' + result.id + '" >' + result.title + '</a></div>' +
-                    '</div>'
-                );
-            }
-        });
-    });
 </script>
 
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-<div class="row movie-list">
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Ad Astra</a></div>
+<div class="row">
+    <div class="column">
+        <h2>Wie zijn we?</h2>
+        <p>
+            Cinematix is het theater voor de betere film en de beste jazz in Breda. Met ruim 9600 filmvoorstellingen per jaar, meer dan 120 premiers,
+            diverse grote premiers, en andere publieksevenementen is er zeven dagen per week altijd wat te beleven. Wees welkom!
+        </p>
     </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/eFCzU9Jqp2Ea17ysDkG8PB0NLiR.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">A Rainy Day in New York</a></div>
+    <div class="column">
+        <h2>Wat doen we?</h2>
+        <p>
+            Met zes filmzalen is er elke week een nieuw filmprogramma vol met de mooiste films: Oscarwinnaars, documentaires, klassiekers, wereldcinema en kinderfilms.
+            Met een programma van de niet-westerse en Europese films, maar voornamelijk kwaliteitsfilm, vertoont Cinematix een aanbod dat doorgaans niet in de reguliere bioscopen te zien is.
+        </p>
     </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/aQvJ5WPzZgYVDrxLX4R6cLJCEaQ.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Sonic the Hedgehog</a></div>
+</div>
+
+<div class="row">
+    <div class="column">
+        <h2>Volg ons ook op social media</h2>
+        <p>We zijn ook actief op social media, volg, like en bekijk onze laatste update op Facebook, Twitter, YouTube of Instagram voor dagelijkse winacties en een blik achter de schermen.</a></p>
+        <br />
+        <p>Hoewel deze profielen niet de gebruikelijke servicekanalen zijn, zal een expert je snel te woord staan bij eventuele vragen.</p>
     </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/bB42KDdfWkOvmzmYkmK58ZlCa9P.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Jumanji: The Next Level</a></div>
+    <div class="column">
+        <h2>Abonneren</h2>
+        <p>Op de hoogte blijven van de laatste updates? Extra korting op je volgende film? Abonneer dan op onze nieuwsbrief!</p>
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <a class="close" href="#">&times;</a>
+                <div id="dialog" class="window">
+                    <div class="box">
+                        <div class="newletter-title">
+                            <h2>Schrijf je in &amp; en ontvang 10% korting</h2>
+                        </div>
+                        <div class="box-content newleter-content">
+                            <label>En ontvang het laatste nieuws over premieres, speciale screeningen en aanbiedingen..</label>
+                            <div id="frm_subscribe">
+                                <form name="subscribe" id="subscribe_popup">
+                                    <div>
+                                        <!-- <span class="required">*</span><span>Email</span>-->
+                                        <input type="text" value="" name="subscribe_pemail" id="subscribe_pemail">
+                                        <input type="hidden" value="" name="subscribe_pname" id="subscribe_pname">
+                                        <div id="notification"></div>
+                                        <a class="button" onclick="email_subscribepopup()"><span>Inschrijven</span></a>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                            <!-- /#frm_subscribe -->
+                        </div>
+                        <!-- /.box-content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-primary skip" href="#popup1" style="padding:6px 15px; width: 250px; background:#333; color:#fff; text-decoration:none; font-family:poppins; border-radius:3px; display:inline-block;">Abonneer op onze nieuwsbrief</a>
     </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/iZf0KyrE25z1sage4SYFLCCrMi9.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">1917</a></div>
+</div>
+
+<div class="row">
+    <div class="column">
+        <nav class="container">
+            <a href="#" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter"></a>
+            <a href="#" class="fa fa-youtube"></a>
+            <a href="#" class="fa fa-instagram"></a>
+        </nav>
     </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/46UQgss4eeiLt1XE2GpHpPkzjIi.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Kamen Rider Zi-O NEXT TIME: Geiz, Majesty</a></div>
+</div>
+
+<div class="row">
+    <div class="column">
+        <h3>Route</h3>
+        <p>
+            We zijn gemakkelijk te bereiken via de A16, afrit Breda Noord. Het parkeerterrein aan de voorzijde is bedoeld voor onze klanten, waar 24 uur 7 dagen per week geparkeerd kan worden. Parkeren achter het gebouw is tot 17.00 uur uitsluitend bedoeld voor medewerkers en voor mensen met een functiebeperking.
+            De ingang vind je aan de Molengracht. Je krijgt gratis toegang met je Cinematix-pas geregistreerd bij Cinematix Bioscopen.
+            Vanaf het Centraal Station in Breda rijden elke 10 minuten bussen naar de Hogeschoollaan.
+        </p>
     </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/8WUVHemHFH2ZIP6NWkwlHWsyrEL.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Bloodshot</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/pjeMs3yqRmFL3giJy4PMXWZTTPa.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Frozen II</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/h4VB6m0RwcicVEZvzftYZyKXs6K.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Birds of Prey (and the Fantabulous Emancipation of One Harley Quinn)</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/kbC6I0AOSLTHFA2dieyat9h8QHP.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Contagion</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Joker</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Parasite</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/fePczipv6ZzDO2uoww4vTAu2Sq3.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Spenser Confidential</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/uIMOFUeXkx4tcAydLrzGMLTtzRK.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">The Grudge</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/pThyQovXQrw2m0s9x82twj48Jq4.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Knives Out</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/jpfkzbIXgKZqCZAkEkFH2VYF63s.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Cars</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/6ApDtO7xaWAfPqfi2IARXIzj8QS.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Ford v Ferrari</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/4U7hpTK0XTQBKT5X60bKmJd05ha.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">The Invisible Man</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/db32LaOibwEliAmSL2jjDF6oDdj.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Star Wars: The Rise of Skywalker</a></div>
-    </div>
-    <div class="col-lg-3 movie-item">
-        <img src="http://image.tmdb.org/t/p/w500/30YacPAcxpNemhhwX0PVUl9pVA3.jpg">
-        <div class="movie-title"><a href="/Movies/Details?id=2">Spies in Disguise</a></div>
+    <div class="column">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2479.1390488415236!2d4.795066215942095!3d51.58401491291913!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c6a1d7942a1a21%3A0x46b0efbbbd6471c7!2sAvans%20Hogeschool!5e0!3m2!1sen!2snl!4v1584476677826!5m2!1sen!2snl" width="500" height="250" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
     </div>
 </div>
 
 
-@if (false)
-{
 
-    @foreach (var item in Model.Movie)
-    {
-        <div class="col-lg-3 movie-item">
-            <img src="http://image.tmdb.org/t/p/w500/eFCzU9Jqp2Ea17ysDkG8PB0NLiR.jpg">
-            <div class="movie-title">
-                <a href="/Movies/Details?id=2">A Rainy Day in New York</a>
-            </div>
-        </div>
-    }
+<div class="row">
+    <div class="column">
+        <h2>Hapjes &amp; Drankjes</h2>
+        <p>Maak je bezoek aan Cinematix compleet met een drankje en een snack naar keuze! Met ons ruime assortiment bepaal jij zelf waarmee je jouw honger en dorst stilt tijdens de film, bekijk ons assortiment</p>
+        <p>Heeft u een allergie? Laat het ons dan weten. Dan zorgen wij voor dat we daar rekening mee houden.</p>
+    </div>
+    <div class="column">
+        <h2>Hapjes</h2>
+        <table>
+            <tr>
+                <th>Versnapering</th>
+                <th>Volume</th>
+                <th>Prijs</th>
+            </tr>
+            <tr>
+                <td>Popcorn, Zoet</td>
+                <td>Klein</td>
+                <td>€ 1,-</td>
+            </tr>
+            <tr>
+                <td>Popcorn, Zoet</td>
+                <td>Middelgroot</td>
+                <td>€ 1,50</td>
+            </tr>
+            <tr>
+                <td>Popcorn, Zoet</td>
+                <td>Groot</td>
+                <td>€ 2,-</td>
+            </tr>
+            <tr>
+                <td>Popcorn, Zout</td>
+                <td>Klein</td>
+                <td>€ 1,-</td>
+            </tr>
+            <tr>
+                <td>Popcorn, Zout</td>
+                <td>Middelgroot</td>
+                <td>€ 1,50</td>
+            </tr>
+            <tr>
+                <td>Popcorn, Zout</td>
+                <td>Groot</td>
+                <td>€ 2,-</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="column">
+    </div>
+    <div class="column">
+    </div>
+</div>
+
+    <style>
+        .movie-item {
+            margin-bottom: 1.5rem;
+        }
+
+            .movie-item img {
+                width: 100%;
+            }
+
+            .movie-item .movie-title {
+                padding: .5rem;
+                border: 1px solid black;
+                text-align: center;
+                font-family: sans-serif;
+            }
+
+        {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
+            z-index: 9999;
+        }
+
+            .overlay:target {
+                visibility: visible;
+                opacity: 1;
+            }
+
+        #popup1 {
+            font-family: poppins;
+        }
+
+            #popup1 .popup {
+                margin: 0px auto;
+                padding: 50px 20px;
+                background: #fff;
+                border-radius: 0px;
+                height: 260px;
+                width: 690px;
+                position: relative;
+                text-align: center;
+                top: 50% !important;
+                position: fixed !important;
+                -moz-transform: translateY(-50%);
+                -webkit-transform: translateY(-50%);
+                -o-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+                right: 0px;
+                left: 0;
+            }
+
+                #popup1 .popup h2 {
+                    margin-top: 0;
+                    color: #333;
+                }
+
+                #popup1 .popup .close {
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    transition: all 200ms;
+                    font-size: 30px;
+                    font-weight: normal;
+                    text-decoration: none;
+                    text-align: center;
+                    background: #333;
+                    border-radius: 0;
+                    cursor: pointer;
+                    float: right;
+                    padding: 0;
+                    color: #fff;
+                    margin-top: 0;
+                    margin-right: 0;
+                    height: 40px;
+                    width: 40px;
+                    line-height: 45px;
+                }
+
+                    #popup1 .popup .close:hover {
+                        color: #06D85F;
+                    }
+
+                #popup1 .popup .content {
+                    max-height: 30%;
+                    overflow: auto;
+                }
+
+            #popup1 .newletter-title h2 {
+                font-size: 24px;
+                text-transform: uppercase;
+                color: #000;
+                font-weight: 700;
+                letter-spacing: 3px;
+                margin: 0 0 15px;
+            }
+
+            #popup1 .box-content label {
+                font-weight: 400;
+                max-width: 560px;
+                display: inline-block;
+                margin-bottom: 5px;
+                font-size: 14px;
+                line-height: 26px;
+            }
+
+        .newletter-popup {
+            background: #fff;
+            top: 50% !important;
+            position: fixed !important;
+            padding: 0;
+            text-align: center;
+            -moz-transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        #popup1 #frm_subscribe #subscribe_pemail {
+            background: #EBEBEB none repeat scroll 0% 0%;
+            border: medium none;
+            height: 40px;
+            width: 65%;
+            margin: 20px 0;
+            padding-left: 15px;
+        }
+
+        #popup1 #frm_subscribe a {
+            cursor: pointer;
+            border: none;
+            background: #333;
+            padding: 3px 25px;
+            text-transform: uppercase;
+            font-size: 14px;
+            color: #fff;
+            font-weight: 600;
+            line-height: 34px;
+            display: inline-block;
+            border-radius: 0;
+            letter-spacing: 2px;
+        }
+
+        #popup1 .box-content .subscribe-bottom {
+            margin-top: 20px;
+        }
+
+            #popup1 .box-content .subscribe-bottom #newsletter_popup_dont_show_again {
+                display: inline-block;
+                margin: 0;
+                vertical-align: middle;
+                margin-top: -1px;
+            }
+
+            #popup1 .box-content .subscribe-bottom label {
+                margin: 0;
+                font-weight: 400;
+                max-width: 650px;
+                display: inline-block;
+                margin-bottom: 5px;
+                font-size: 12px;
+            }
+
+        .fa {
+            padding: 25px;
+            font-size: 20px;
+            height: 50px;
+            width: 50px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+        }
+
+            .fa:hover {
+                opacity: 0.7;
+            }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .fa-twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
+        .fa-youtube {
+            background: #bb0000;
+            color: white;
+        }
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px transparent #ffffff;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+    </style>
+
+    <div class="row movie-list"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            $.ajax({
+                type: 'GET',
+                url: 'https://api.themoviedb.org/3/discover/movie',
+                data: {
+                    api_key: 'cea80748836f2f4f9f70ce9d4265efa1'
+                }
+            }).done(function (xhr) {
+                console.log(xhr);
+
+                for (let index in xhr.results) {
+                    let result = xhr.results[index];
+                    $('.movie-list').append(
+                        '<div class="col-lg-3 movie-item">' +
+                        '<img src = "http://image.tmdb.org/t/p/w500' + result.poster_path + '" />' +
+                        '<div class="movie-title">' + result.title + '</div>' +
+                        '</div>'
+                    );
+                }
+            });
+        });
+    </script>
+
     <p>
         <a asp-page="Create"> Create New</a>
     </p>
@@ -215,12 +494,10 @@
                     </td>
                     <td>
                         <a asp-page="./Edit" asp-route-id="@item.Id"> Edit</a> |
-                        <a href="/Movies/Details?id=2" temp="@item.Id"> Details</a> |
+                        <a asp-page="./Details" asp-route-id="@item.Id"> Details</a> |
                         <a asp-page="./Delete" asp-route-id="@item.Id"> Delete</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
-
-}
