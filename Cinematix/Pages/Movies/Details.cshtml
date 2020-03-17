@@ -4,70 +4,128 @@
 @{
     ViewData["Title"] = "Details";
 }
-
-<h1>Details</h1>
-
-<div>
-    <h4>Movie</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.ImdbId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.ImdbId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Director)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.Director)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Cast)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.Cast)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Runtime)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.Runtime)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Rating)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.Rating)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Genre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.Genre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.PegiRating)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Movie.PegiRating)
-        </dd>
-    </dl>
+<div class="row">
+    <div class="col-lg-4">
+        <img src="http://image.tmdb.org/t/p/w500/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg" class="w-100">
+    </div>
+    <div class="col-lg-8">
+        <h2 class="mb-3">Ad Astra</h2>
+        <div class="row">
+            <div class="col-lg-4">
+                <h6>DUUR</h6>
+                <hr class="my-2" />
+                <p>128 minuten</p>
+            </div>
+            <div class="col-lg-4">
+                <h6>GENRE</h6>
+                <hr class="my-2" />
+                <p>Opera</p>
+            </div>
+            <div class="col-lg-4">
+                <h6>REGIE</h6>
+                <hr class="my-2" />
+                <p>Claus Guth</p>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-9">
+                <p style="font-size:.9rem">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a velit pulvinar est venenatis egestas. Sed ac odio posuere, ornare magna lacinia, tincidunt tellus. Sed vel consectetur augue. Nullam sed elit id lectus molestie placerat. Suspendisse eget felis eleifend, congue enim nec, suscipit eros. Etiam eu lacus condimentum, commodo orci ut, maximus enim. Duis volutpat ipsum sed justo cursus, sed suscipit mauris gravida. Phasellus eget leo eu enim rhoncus suscipit. Nulla rutrum leo neque, ut consequat tortor ornare quis. Nunc mi velit, condimentum nec iaculis et, lacinia sed eros. Aliquam luctus et magna tempus congue.
+                    <br />
+                    <br />
+                    Integer semper, est quis mattis tristique, dolor metus accumsan ipsum, sit amet fringilla urna ex sed dolor. Pellentesque vitae commodo lacus, nec luctus lacus. Maecenas tempus consectetur odio, sed imperdiet ligula ultrices eu. Duis cursus commodo elit. Nullam ultricies consectetur est, et aliquam arcu pretium quis. Vestibulum ultrices finibus erat non vestibulum. Mauris tempus eros et porta iaculis.
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Movie.Id">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+
+<div class="row mt-5" id="timeline" style="overflow-x:scroll;white-space: nowrap;display:block">
+    @for (int i = 17; i < 25; i++)
+    {
+    <div class="col-lg-2 d-inline-block p-0" style="float:none;border:1px solid #CCC;border-bottom: 0">
+        <p class="text-center font-weight-bold m-0 py-2" style="border-bottom: 1px solid #CCC">@i maart</p>
+        @for (int j = 12; j <= 18; j += 3)
+        {
+            <p class="text-center m-0 py-2" style="border-bottom: 1px solid #CCC"><a asp-page="./Payment"  asp-route-id="@Model.Movie.Id">@j:00</a></p>
+        }
+    </div>
+    }
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        
+    });
+</script>
+
+@if (false)
+{
+
+    <h1>Details</h1>
+
+    <div>
+        <h4>Movie</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.ImdbId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.ImdbId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Title)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Title)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Director)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Director)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Cast)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Cast)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Runtime)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Runtime)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Rating)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Rating)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.Genre)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.Genre)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Movie.PegiRating)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Movie.PegiRating)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Movie.Id">Edit</a> |
+        <a asp-page="./Index">Back to List</a>
+    </div>
+}
